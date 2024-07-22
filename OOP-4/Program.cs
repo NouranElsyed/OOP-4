@@ -1,4 +1,5 @@
 ﻿using OOP_4.Interface;
+using System;
 using System.Text;
 
 namespace OOP_4
@@ -155,18 +156,19 @@ namespace OOP_4
             #endregion
 
             #region array of stringbuilder
-            StringBuilder[] Names01 = new StringBuilder[1];
-            Names01[0] = new StringBuilder("Omar");
+            //StringBuilder[] Names01 = new StringBuilder[1];
+            //Names01[0] = new StringBuilder("Omar");
 
-            StringBuilder[] Names02 = new StringBuilder[1];
+            //StringBuilder[] Names02 = new StringBuilder[1];
 
 
-            Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
-            Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); //18643596
-            
+            //Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
+            //Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); //18643596
+
             #region shallow copy
             //Names02 = Names01;
-            //Console.WriteLine("Names02 = Names01");
+            //Console.WriteLine("After shallow copy");
+
 
             //Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
             //Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); // 54267293
@@ -183,21 +185,21 @@ namespace OOP_4
 
 
 
-            #region shallow copy
-            Names02 = (StringBuilder[])Names01.Clone();
-            Console.WriteLine("Names02 = Names01");
+            #region deep copy
+            //Names02 = (StringBuilder[])Names01.Clone();
+            //Console.WriteLine("After deep copy");
 
-            Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
-            Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); // 33574638
-            Console.WriteLine($"Names01 [0] = {Names01[0]}");
-            Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+            //Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
+            //Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); // 33574638
+            //Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            //Console.WriteLine($"Names02 [0]  = {Names02[0]}");
 
-            Names02[0].Append(" Amr");
-            Console.WriteLine("change  Names01[0]  ");
+            //Names02[0].Append(" Amr");
+            //Console.WriteLine("change  Names01[0]  ");
 
-            Console.WriteLine($"Names01 [0] = {Names01[0]}");
-            Console.WriteLine($"Names02 [0]  = {Names02[0]}");
-            Console.WriteLine("\n");
+            //Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            //Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+            //Console.WriteLine("\n");
             #endregion
 
 
@@ -207,6 +209,66 @@ namespace OOP_4
             #endregion
 
             #endregion
+
+            #region ICloneable
+            Employee employee01 = new Employee() { Id = 20, Name = "Hala", Salary = 6000 };
+            Employee employee02 = new Employee() { Id = 25, Name = "Mai", Salary = 10000 };
+
+            Console.WriteLine($"HC of employee01 : {employee01.GetHashCode()}");
+            Console.WriteLine($"employee01 : {employee01}");
+            //HC of employee01: 54267293
+            //employee01: Id: 20 , Name: Hala , Salary: 6000
+
+            Console.WriteLine($"HC of employee02 : {employee02.GetHashCode()}");
+            Console.WriteLine($"employee02 : {employee02}");
+            //HC of employee02: 18643596
+            //employee02: Id: 25 , Name: Mai , Salary: 10000
+
+            employee02 = (Employee)employee01.Clone();
+            Console.WriteLine("After deep copy");
+
+            Console.WriteLine($"HC of employee01 : {employee01.GetHashCode()}");
+            Console.WriteLine($"employee01 : {employee01}");
+            //HC of employee01: 54267293
+            //employee01: Id: 20 , Name: Hala , Salary: 6000
+
+            Console.WriteLine($"HC of employee02 : {employee02.GetHashCode()}");
+            Console.WriteLine($"employee02 : {employee02}");
+            //HC of employee02: 33574638
+            //employee02: Id: 20 , Name: Hala , Salary: 6000
+
+            employee02.Id = 30;
+            employee02.Name = "Samar";
+            employee02.Salary = 7500;
+
+            Console.WriteLine("After change employee02 values");
+
+            Console.WriteLine($"HC of employee01 : {employee01.GetHashCode()}");
+            Console.WriteLine($"employee01 : {employee01}");
+            //HC of employee01: 54267293
+            //employee01: Id: 20 , Name: Hala , Salary: 6000
+
+            Console.WriteLine($"HC of employee02 : {employee02.GetHashCode()}");
+            Console.WriteLine($"employee02 : {employee02}");
+            //HC of employee02: 33574638
+            //employee02: Id: 30 , Name: Samar , Salary: 7500
+
+
+            employee02 = new Employee(employee01);
+
+            Console.WriteLine("After deep copy with copy constructor");
+
+            Console.WriteLine($"HC of employee01 : {employee01.GetHashCode()}");
+            Console.WriteLine($"employee01 : {employee01}");
+            //HC of employee01: 54267293
+            //employee01: Id: 20 , Name: Hala , Salary: 6000
+
+            Console.WriteLine($"HC of employee02 : {employee02.GetHashCode()}");
+            Console.WriteLine($"employee02 : {employee02}");
+            //HC of employee02: 33574638
+            //employee02: Id: 30 , Name: Samar , Salary: 7500
+            #endregion
+
         }
     }
 }
