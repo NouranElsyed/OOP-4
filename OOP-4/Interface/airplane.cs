@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace OOP_4.Interface
 {
-    internal class airplane : vechile, IMovable, IFlyable
+    internal class airplane : vehicle, IMovable, IFlyable
     {
 
 
 
-        void IMovable.Backword()
+        void IMovable.Backward()
         {
-            Console.WriteLine("airplane move Movable Backword");
+            Console.WriteLine("airplane move Movable Backward");
         }
 
-        void IFlyable.Backword()
+        void IFlyable.Backward()
         {
-            Console.WriteLine("airplane move Flyable Backword");
+            Console.WriteLine("airplane move Flyable Backward");
 
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_4.Interface
 {
-    internal class vechile
+    internal class vehicle
     {
 
         public int Speed { get; set; }

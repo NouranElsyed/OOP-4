@@ -9,7 +9,7 @@ namespace OOP_4.Interface
     internal interface IFlyable
     {
         void Forward();
-        void Backword();
+        void Backward();
         void Right();
         void Left();
 

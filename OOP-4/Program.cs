@@ -1,8 +1,9 @@
 ﻿using OOP_4.Interface;
+using System.Text;
 
 namespace OOP_4
 {
- 
+
     internal class Program
     {
 
@@ -18,7 +19,7 @@ namespace OOP_4
                 series.Reset();
             }
         }
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
             #region interface
             MyType myType = new MyType();
@@ -42,19 +43,170 @@ namespace OOP_4
 
             #region implement interface Explicitly
             car car = new car();
-            car.Backword(); // implicitly
-            
+            car.Backward(); // implicitly
+
             IMovable Movableplane = new airplane();
             IFlyable Flyableplane = new airplane();
 
-            Movableplane.Backword();//explicitly
-            Flyableplane.Backword();//explicitly
+            Movableplane.Backward();//explicitly
+            Flyableplane.Backward();//explicitly
+            Console.WriteLine("\n");
 
+            #endregion
+
+            #region Shallow copy and Deep copy
+
+            #region value type 
+            //int[] arr01 = { 1, 2, 3 };
+            //int[] arr02 = new int[3];
+
+            //Console.WriteLine($"HC of arr01 : {arr01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of arr02 : {arr02.GetHashCode()}"); //18643596
+
+            //Console.WriteLine("\n");
+
+            #region shallow copy
+
+            //arr02 = arr01; //shallow copy
+            //Console.WriteLine("After shallow copy");
+
+            //Console.WriteLine($"HC of arr01 : {arr01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of arr02 : {arr02.GetHashCode()}"); //54267293
+
+            //arr01[2] = 100;
+
+            //Console.WriteLine($"arr01[2] = {arr01[2]}");
+            //Console.WriteLine($"arr02[2] = {arr02[2]}");
+            //Console.WriteLine("\n");
+
+
+            //Console.WriteLine("\n");
+            #endregion
+            #region deep copy
+            //arr02 = (int[])arr01.Clone(); //deep copy
+            //Console.WriteLine("After deep copy");
+
+            //Console.WriteLine($"HC of arr01 : {arr01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of arr02 : {arr02.GetHashCode()}"); //33574638
+
+
+            //arr01[1] = 10;
+
+            //Console.WriteLine($"arr01[1] = {arr01[1]}");
+            //Console.WriteLine($"arr02[1] = {arr02[1]}");
+
+            //Console.WriteLine("\n");
+            #endregion
+
+            #endregion
+
+            #region reference type 
+            #region array of string
+            //string[] Name01 = { "Nouran" };
+            //string[] Name02 = new string[1];
+
+            //Console.WriteLine($"HC of Name01 : {Name01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of Name02 : {Name02.GetHashCode()}"); //18643596
+
+            //Console.WriteLine("\n");
+
+            #region shallow copy
+
+            //Name02 = Name01; //shallow copy
+            //Console.WriteLine("After shallow copy");
+
+            //Console.WriteLine($"HC of Name01  : {Name01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of Name02  : {Name02.GetHashCode()}"); //54267293
+
+            //Console.WriteLine($"Name01 [0] = {Name01[0]}");
+            //Console.WriteLine($"Name02 [0]  = {Name02[0]}");
+
+            //Name01[0] = "Amr";
+            //Console.WriteLine("change  Name01[0]  ");
+
+            //Console.WriteLine($"Name01 [0] = {Name01[0]}");
+            //Console.WriteLine($"Name02 [0]  = {Name02[0]}");
+            //Console.WriteLine("\n");
+
+
+
+            #endregion
+            #region deep copy
+
+
+            //Name02 = (string[])Name01.Clone(); //shallow copy
+
+            //Console.WriteLine("After deep copy");
+
+            //Console.WriteLine($"HC of Name01  : {Name01.GetHashCode()}"); //54267293
+            //Console.WriteLine($"HC of Name02  : {Name02.GetHashCode()}"); //54267293
+
+            //Console.WriteLine($"Name01 [0] = {Name01[0]}");
+            //Console.WriteLine($"Name02 [0]  = {Name02[0]}");
+
+            //Name01[0] = "Amr";
+            //Console.WriteLine("change  Name01[0]  ");
+
+            //Console.WriteLine($"Name01 [0] = {Name01[0]}");
+            //Console.WriteLine($"Name02 [0]  = {Name02[0]}");
+            //Console.WriteLine("\n");
+            #endregion
+
+            #endregion
+
+            #region array of stringbuilder
+            StringBuilder[] Names01 = new StringBuilder[1];
+            Names01[0] = new StringBuilder("Omar");
+
+            StringBuilder[] Names02 = new StringBuilder[1];
+
+
+            Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
+            Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); //18643596
+            
+            #region shallow copy
+            //Names02 = Names01;
+            //Console.WriteLine("Names02 = Names01");
+
+            //Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
+            //Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); // 54267293
+            //Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            //Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+
+            //Names02[0].Append(" Amr");
+            //Console.WriteLine("change  Names01[0]  ");
+
+            //Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            //Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+            //Console.WriteLine("\n");
             #endregion
 
 
 
+            #region shallow copy
+            Names02 = (StringBuilder[])Names01.Clone();
+            Console.WriteLine("Names02 = Names01");
 
+            Console.WriteLine($"HC of Name01 : {Names01.GetHashCode()}"); // 54267293
+            Console.WriteLine($"HC of Name02 : {Names02.GetHashCode()}"); // 33574638
+            Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+
+            Names02[0].Append(" Amr");
+            Console.WriteLine("change  Names01[0]  ");
+
+            Console.WriteLine($"Names01 [0] = {Names01[0]}");
+            Console.WriteLine($"Names02 [0]  = {Names02[0]}");
+            Console.WriteLine("\n");
+            #endregion
+
+
+            #endregion
+
+
+            #endregion
+
+            #endregion
         }
     }
 }

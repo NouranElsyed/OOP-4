@@ -9,7 +9,7 @@ namespace OOP_4.Interface
     internal interface IMovable
     {
         void Forward();
-        void Backword();
+        void Backward();
         void Right();
         void Left();
 

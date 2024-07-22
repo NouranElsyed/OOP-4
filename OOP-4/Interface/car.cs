@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OOP_4.Interface
 {
-    internal class car : vechile, IMovable
+    internal class car : vehicle, IMovable
     {
-        public void Backword()
+        public void Backward()
         {
-            Console.WriteLine("car move Backword");
+            Console.WriteLine("car move Backward");
         }
 
         public void Forward()
