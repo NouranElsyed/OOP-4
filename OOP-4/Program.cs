@@ -267,6 +267,34 @@ namespace OOP_4
             Console.WriteLine($"employee02 : {employee02}");
             //HC of employee02: 33574638
             //employee02: Id: 30 , Name: Samar , Salary: 7500
+
+
+            Console.WriteLine("\n===================================\n");
+
+            #endregion
+
+            #region icomparable
+            Employee[] employees = new Employee[4]
+            {
+            new Employee(){ Id =10 , Name= "Aliaa" , Salary = 10000},
+            new Employee(){ Id =20 , Name= "Hala" , Salary = 20000},
+            new Employee(){ Id =30 , Name= "Mai" , Salary = 25000},
+            new Employee(){ Id =40 , Name= "Samar" , Salary = 15000}
+            };
+            Array.Sort(employees);
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp);
+            }
+            Console.WriteLine("\n===================================\n");
+            #endregion
+
+            #region icomparer
+            Array.Sort( employees , new EmployeeIdComparer());
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp);
+            }
             #endregion
 
         }
